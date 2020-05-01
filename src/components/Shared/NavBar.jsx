@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="/">
-        Navbar
-      </a>
+      <Link to="/" className="navbar-brand">
+        My Content Site
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -20,16 +21,18 @@ const NavBar = () => {
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <a className="nav-link" href="/">
-              Home <span className="sr-only">(current)</span>
-            </a>
-          </li>
           <li className="nav-item">
-            <a className="nav-link" href="/">
-              Link
-            </a>
+            <Link to="/signin" className="nav-link">
+              Sign In
+            </Link>
           </li>
+          {props.isLoggedIn && (
+            <li className="nav-item">
+              <Link to="/content" className="nav-link">
+                Content
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </nav>
